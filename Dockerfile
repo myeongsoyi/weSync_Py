@@ -6,7 +6,9 @@ COPY requirements.txt /app/requirements.txt
 
 RUN apt-get update
 
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+RUN apt-get -y install python3-pip
+
+RUN pip3 install --no-cache-dir --upgrade -r /app/requirements.txt
 
 COPY ./app/ /app/
 
