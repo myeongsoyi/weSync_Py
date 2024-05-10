@@ -1,8 +1,9 @@
 from fastapi import APIRouter, File
+from schema import CommonResponse, ErrorResponse
 
 rScore = APIRouter(prefix="/py-api/score")
 
-@rScore.post('/', tags = ['score'])
+@rScore.post('/', tags = ['score'], response_model=CommonResponse)
 async def upload_score(file: bytes = File()):
     # pdf 파일 받기
 
@@ -14,12 +15,14 @@ async def upload_score(file: bytes = File()):
 
     # 반주 s3 저장
     
-    pass
+    return CommonResponse(success=True)
 
-@rScore.get('/{team_id}', tags = ['score'])
+@rScore.get('/{team_id}', tags = ['score'], response_model=CommonResponse)
 def get_scores():
-    pass
+    # 팀 아이디로 악보 조회
+    return CommonResponse(success=True)
 
-@rScore.delete('/{team_id}', tags = ['score'])
+@rScore.delete('/{team_id}', tags = ['score'], response_model=CommonResponse)
 def delete_scores():
-    pass
+    # 팀 아이디로 악보 조회
+    return CommonResponse(success=True)

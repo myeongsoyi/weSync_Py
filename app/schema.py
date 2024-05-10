@@ -1,4 +1,15 @@
 from pydantic import BaseModel
+from typing import Optional
+
+class ErrorResponse(BaseModel):
+    errorCode: int
+    errorMessage: str
+
+class CommonResponse(BaseModel):
+    success: bool
+    data: Optional[dict] = None
+    error: Optional[ErrorResponse] = None
+    
 
 class ScoreBase(BaseModel):
     position_id: int
